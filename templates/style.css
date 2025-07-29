@@ -1,0 +1,180 @@
+:root {
+  --gray-dark: #2e2e2e;
+  --gray-mid: #cccccc;
+  --gray-light: #f5f5f5;
+  --gray-white: #ffffff;
+  --text-dark: #333;
+  --teal: #14b8a6; /* teal-500 */
+  --teal-hover: #0f766e; /* teal-700 */
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--gray-light);
+  min-height: 100vh;
+  color: var(--text-dark);
+}
+
+/* Generic Glassy Card Style → Now Flat Light */
+.glass-card {
+  background-color: var(--gray-white);
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--gray-mid);
+}
+
+/* Functional Cards */
+.attribute-card {
+  background-color: var(--gray-white);
+  border: 1px solid var(--gray-mid);
+  transition: transform 0.2s ease;
+}
+
+.attribute-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Form Controls */
+.form-select-modern {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--gray-mid);
+  background-color: var(--gray-light);
+  color: var(--text-dark);
+  transition: border 0.3s ease;
+}
+
+.form-select-modern:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.25);
+}
+
+/* Logo Placeholder */
+.hu-logo-placeholder {
+  background-color: var(--gray-mid);
+  background-image: url(resized-images.png);
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+/* Labels & Headers */
+.text-white,
+.text-light {
+  color: var(--text-dark) !important;
+}
+
+.bg-yellow,
+.bg-green,
+.text-yellow {
+  background-color: var(--gray-light) !important;
+  color: var(--text-dark) !important;
+}
+
+/* Results Container */
+#results-container {
+  background-color: var(--gray-white);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  color: var(--text-dark);
+}
+
+/* Performance Badges */
+.performance-high {
+  background: #4caf50;
+  color: white;
+}
+.performance-medium {
+  background: #facc15;
+  color: black;
+}
+.performance-low {
+  background: #dc2626;
+  color: white;
+}
+
+.result-badge {
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+/* Spinner */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Footer */
+footer {
+  background-color: var(--gray-mid);
+  color: var(--text-dark);
+  border-top: 1px solid #bbb;
+}
+
+footer h5 {
+  color: var(--text-dark);
+  border-bottom: 2px solid var(--gray-dark);
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+/* Course Items */
+.course-name {
+  background-color: var(--gray-light);
+  color: var(--text-dark);
+}
+
+/* Empty States */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #777;
+}
+
+.empty-state i {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #aaa;
+}
+
+/* Sticky Button Container */
+#calculate-container {
+  background-color: var(--gray-light);
+  padding: 1.5rem;
+  border-top: 1px solid var(--gray-mid);
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+  text-align: center;
+}
+
+/* Teal Button */
+#calculate {
+  background-color: var(--teal);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#calculate:hover {
+  background-color: var(--teal-hover);
+  transform: translateY(-2px);
+}
