@@ -13,7 +13,7 @@
 * Provides personalized feedback based on predictions and input data
 * Displays results and recommendations clearly for easy understanding
 
-## Tech Stack
+## Stuff I used
 
 * **Frontend**: HTML, CSS, JavaScript
 * **Backend**: Python (Flask)
