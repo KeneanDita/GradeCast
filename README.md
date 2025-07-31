@@ -47,6 +47,25 @@ python .\app.py
 
 * Keeping in mind that the models exist in the models folder or else run the training script or training notebook to export the models accordingly.
 
+## Results of the models
+
+### Random Forest Regressor
+
+* Mean Squared Error: 0.05
+* R² Score: 0.96
+
+### Random Forest Classifier report
+
+| Class          | Precision | Recall | F1-Score | Support |
+|----------------|-----------|--------|----------|---------|
+| High Risk      | 1.00      | 1.00   | 1.00     | 94      |
+| Low Risk       | 1.00      | 1.00   | 1.00     | 332     |
+| Moderate Risk  | 1.00      | 1.00   | 1.00     | 677     |
+| Very High Risk | 1.00      | 1.00   | 1.00     | 6       |
+| Very Low Risk  | 1.00      | 1.00   | 1.00     | 49      |
+| **Accuracy**   |           |        | **1.00** | 1158    |
+| **Macro Avg**  | 1.00      | 1.00   | 1.00     | 1158    |
+| **Weighted Avg**| 1.00     | 1.00   | 1.00     | 1158    |
 
 ## Contributing
 
