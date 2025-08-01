@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GradeCast - Predict Activity Score</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container py-4">
+      <nav class="navbar glass-card mb-4 p-3">
+        <div
+          class="container-fluid d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <a
+              href="index.html"
+              class="navbar-brand mb-0 h1 fw-bold text-white"
+            >
+              <span class="navbar-brand mb-0 h1 fw-bold text-white"
+                >GradeCast</span
+              >
+            </a>
+            <p class="mb-0 text-light">Student Performance Predictor</p>
+          </div>
+          <a href="index.html" class="btn btn-sm btn-outline-light"
+            >← Back to Home</a
+          >
+        </div>
+      </nav>
+
+      <div class="glass-card p-4 mb-4">
+        <h2 class="h4 mb-4 text-center">Predict Your Activity Score</h2>
+
+        <form id="score-form" class="row g-4">
+          <div class="col-md-4">
+            <label class="form-label">Attendance (%)</label>
+            <input
+              type="number"
+              step="1"
+              max="100"
+              min="50"
+              class="form-control"
+              id="attendance"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">CGPA (out of 4)</label>
+            <input
+              type="number"
+              step="0.1"
+              max="4"
+              min="0"
+              class="form-control"
+              id="cgpa"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Library Usage (hours/month)</label>
+            <input
+              type="number"
+              step="1"
+              max="60"
+              min="0"
+              class="form-control"
+              id="library"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Internships (count)</label>
+            <input
+              type="number"
+              class="form-control"
+              id="internships"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Certificates (count)</label>
+            <input
+              type="number"
+              class="form-control"
+              id="certificates"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">GPA Sem 1</label>
+            <input
+              type="number"
+              step="0.1"
+              max="4"
+              min="0"
+              class="form-control"
+              id="gpa1"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">GPA Sem 2</label>
+            <input
+              type="number"
+              step="0.1"
+              max="4"
+              min="0"
+              class="form-control"
+              id="gpa2"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Project Involvement</label>
+            <select class="form-select" id="project">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-success px-5 py-2">
+              Predict Score
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div id="score-result" class="glass-card p-4 d-none text-center">
+        <h4 class="mb-3">Your Predicted Activity Score:</h4>
+        <h1 id="score-value" class="display-4 text-primary fw-bold"></h1>
+      </div>
+
+      <footer class="glass-card mt-5 p-4 text-center text-white">
+        <div class="container">
+          <p class="mb-0">
+            © 2025 Kenean Dita - GradeCast. All rights reserved.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document
+        .getElementById("score-form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const rawInputs = {
+            attendance: +document.getElementById("attendance").value,
+            cgpa: +document.getElementById("cgpa").value,
+            library_usage: +document.getElementById("library").value,
+            internships: +document.getElementById("internships").value,
+            certificates: +document.getElementById("certificates").value,
+            gpa_sem1: +document.getElementById("gpa1").value,
+            gpa_sem2: +document.getElementById("gpa2").value,
+            project_involvement: +document.getElementById("project").value,
+          };
+
+          const scaled = {
+            attendance: (rawInputs.attendance / 100) * 10,
+            cgpa: (rawInputs.cgpa / 4) * 10,
+            library_usage: (rawInputs.library_usage / 60) * 10,
+            internships: rawInputs.internships,
+            certificates: rawInputs.certificates,
+            gpa_sem1: (rawInputs.gpa_sem1 / 4) * 10,
+            gpa_sem2: (rawInputs.gpa_sem2 / 4) * 10,
+            project_involvement: rawInputs.project_involvement,
+          };
+
+          try {
+            const res = await fetch("/predict_score", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(scaled),
+            });
+            const data = await res.json();
+
+            document.getElementById("score-value").textContent =
+              data.activity_score;
+            document.getElementById("score-result").classList.remove("d-none");
+          } catch (err) {
+            alert("Prediction failed. Check inputs or server.");
+            console.error(err);
+          }
+        });
+    </script>
+  </body>
+</html>
