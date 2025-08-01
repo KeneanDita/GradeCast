@@ -26,6 +26,8 @@
 python GradeCast.py
 ```
 
+~ If you want to use the notebook which I usually do, Just run each cell with their order and will do the magic for you. You can also make changes without being overwhelmed.
+
 ## Getting Started
 
 ### 1. Clone the Repository
