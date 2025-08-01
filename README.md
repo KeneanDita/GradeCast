@@ -20,6 +20,12 @@
 * **Machine Learning**: scikit-learn (Random Forest, Logistic Regression), pickle
 * **Utilities**: Bash scripting for setup and automation
 
+~ Note of usage: for people who prefer .py script for training the models, I have made GradeCast.py which will automatically export the required models at their required location. Just run the following bash script
+
+```bash
+python GradeCast.py
+```
+
 ## Getting Started
 
 ### 1. Clone the Repository
