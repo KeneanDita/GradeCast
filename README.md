@@ -51,7 +51,6 @@ python .\app.py
 
 ~ Navigate to <http://127.0.0.1:5000/>
 
-
 * Keeping in mind that the models exist in the models folder or else run the training script or training notebook to export the models accordingly.
 
 ## Results of the models
