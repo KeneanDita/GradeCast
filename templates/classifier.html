@@ -70,7 +70,7 @@
             <input
               type="number"
               step="1"
-              max="24"
+              max="60"
               min="0"
               class="form-control"
               id="library"
@@ -169,7 +169,7 @@
           const scaled = {
             attendance: (rawInputs.attendance / 100) * 10,
             cgpa: (rawInputs.cgpa / 4) * 10,
-            library_usage: (rawInputs.library_usage / 24) * 10,
+            library_usage: (rawInputs.library_usage / 60) * 10,
             internships: rawInputs.internships,
             certificates: rawInputs.certificates,
             gpa_sem1: (rawInputs.gpa_sem1 / 4) * 10,
