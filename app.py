@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import numpy as np
 import joblib
 
@@ -48,8 +48,6 @@ def predict_score():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
-# --- Predict Risk Level ---
 @app.route("/predict_risk", methods=["POST"])
 def predict_risk():
     try:
@@ -67,7 +65,7 @@ def predict_risk():
 # --- Home route (for test) ---
 @app.route("/")
 def index():
-    return "<h2>GradeCast API running — Predict your score or risk!</h2>"
+    return render_template("index.html")
 
 
 if __name__ == "__main__":
