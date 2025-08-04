@@ -12,7 +12,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
-    <link href="style.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
   </head>
   <body>
     <div class="container py-4">
@@ -164,6 +167,7 @@
             gpa_sem1: +document.getElementById("gpa1").value,
             gpa_sem2: +document.getElementById("gpa2").value,
             project_involvement: +document.getElementById("project").value,
+            extra_curricular: +document.getElementById("extra").value,
           };
 
           const scaled = {
@@ -175,6 +179,7 @@
             gpa_sem1: (rawInputs.gpa_sem1 / 4) * 10,
             gpa_sem2: (rawInputs.gpa_sem2 / 4) * 10,
             project_involvement: rawInputs.project_involvement,
+            extra_curricular: rawInputs.extra_curricular,
           };
 
           try {
