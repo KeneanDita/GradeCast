@@ -66,14 +66,11 @@
             />
           </div>
           <div class="col-md-4">
-            <label class="form-label">Library Usage (hours/month)</label>
+            <label class="form-label">Certificates (count)</label>
             <input
               type="number"
-              step="1"
-              max="60"
-              min="0"
               class="form-control"
-              id="library"
+              id="certificates"
               required
             />
           </div>
@@ -87,13 +84,34 @@
             />
           </div>
           <div class="col-md-4">
-            <label class="form-label">Certificates (count)</label>
+            <label class="form-label">Extra Curricular (0–10)</label>
             <input
               type="number"
+              min="0"
+              max="10"
               class="form-control"
-              id="certificates"
+              id="extra"
               required
             />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Library Usage (hours/month)</label>
+            <input
+              type="number"
+              step="1"
+              max="60"
+              min="0"
+              class="form-control"
+              id="library"
+              required
+            />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Project Involvement</label>
+            <select class="form-select" id="project">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
           </div>
           <div class="col-md-4">
             <label class="form-label">GPA Sem 1</label>
@@ -118,13 +136,6 @@
               id="gpa2"
               required
             />
-          </div>
-          <div class="col-md-4">
-            <label class="form-label">Project Involvement</label>
-            <select class="form-select" id="project">
-              <option value="1">Yes</option>
-              <option value="0">No</option>
-            </select>
           </div>
 
           <div class="col-12 text-center">
@@ -164,6 +175,7 @@
             gpa_sem1: +document.getElementById("gpa1").value,
             gpa_sem2: +document.getElementById("gpa2").value,
             project_involvement: +document.getElementById("project").value,
+            extra_curricular: +document.getElementById("extra").value,
           };
 
           const scaled = {
@@ -175,6 +187,7 @@
             gpa_sem1: (rawInputs.gpa_sem1 / 4) * 10,
             gpa_sem2: (rawInputs.gpa_sem2 / 4) * 10,
             project_involvement: rawInputs.project_involvement,
+            extra_curricular: rawInputs.extra_curricular,
           };
 
           try {
