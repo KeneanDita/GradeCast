@@ -19,13 +19,14 @@
   </head>
   <body>
     <div class="container py-4">
+      <!-- NAVBAR -->
       <nav class="navbar glass-card mb-4 p-3">
         <div
           class="container-fluid d-flex justify-content-between align-items-center"
         >
           <div>
             <a
-              href="index.html"
+              href="{{ url_for('index') }}"
               class="navbar-brand mb-0 h1 fw-bold text-white"
             >
               <span class="navbar-brand mb-0 h1 fw-bold text-white"
@@ -34,9 +35,14 @@
             </a>
             <p class="mb-0 text-light">Student Performance Predictor</p>
           </div>
-          <a href="index.html" class="btn btn-sm btn-outline-light"
-            >← Back to Home</a
-          >
+          <div>
+            <a
+              href="{{ url_for('index') }}"
+              class="btn btn-sm btn-outline-light text-white"
+            >
+              ← Back to Home
+            </a>
+          </div>
         </div>
       </nav>
 
