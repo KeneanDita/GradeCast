@@ -37,7 +37,23 @@ def scale_inputs(data):
     )
 
 
-# --- Predict Activity Score ---
+# --- ROUTES TO HTML PAGES ---
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/predictor")
+def predictor_page():
+    return render_template("predictor.html")
+
+
+@app.route("/classifier")
+def classifier_page():
+    return render_template("classifier.html")
+
+
+# --- API: Predict Activity Score ---
 @app.route("/predict_score", methods=["POST"])
 def predict_score():
     try:
@@ -48,6 +64,8 @@ def predict_score():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+
+# --- API: Predict Risk Category ---
 @app.route("/predict_risk", methods=["POST"])
 def predict_risk():
     try:
@@ -60,12 +78,6 @@ def predict_risk():
         return jsonify({"risk_level": risk_label})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
-
-# --- Home route (for test) ---
-@app.route("/")
-def index():
-    return render_template("index.html")
 
 
 if __name__ == "__main__":
