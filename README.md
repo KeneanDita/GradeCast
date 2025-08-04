@@ -13,6 +13,10 @@
 * Provides personalized feedback based on predictions and input data
 * Displays results and recommendations clearly for easy understanding
 
+### Landing Page Overview
+
+![Landing Page overview](assets/LP.png)
+
 ## Stuff I used
 
 * **Frontend**: HTML, CSS, JavaScript
