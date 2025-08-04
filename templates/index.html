@@ -12,7 +12,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
-    <link href="style.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
   </head>
   <body>
     <div class="container py-4">
@@ -45,10 +48,16 @@
         </p>
 
         <div class="d-flex justify-content-center gap-4">
-          <a href="predictor.html" class="btn btn-lg btn-primary px-5 py-3">
+          <a
+            href="{{ url_for('predictor_page') }}"
+            class="btn btn-lg btn-primary px-5 py-3"
+          >
             <i class="fas fa-chart-line me-2"></i> Predict My Score
           </a>
-          <a href="classifier.html" class="btn btn-lg btn-warning px-5 py-3">
+          <a
+            href="{{ url_for('classifier_page') }}"
+            class="btn btn-lg btn-warning px-5 py-3"
+          >
             <i class="fas fa-shield-halved me-2"></i> Classify My Risk
           </a>
         </div>
@@ -82,5 +91,6 @@
         </div>
       </footer>
     </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>
