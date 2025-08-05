@@ -1,9 +1,13 @@
+# risk_prediction_model.py
+
 # Import necessary libraries
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
+import os
+
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -14,6 +18,9 @@ from sklearn.metrics import (
     confusion_matrix,
     ConfusionMatrixDisplay,
 )
+
+# Create models directory if it doesn't exist
+os.makedirs("models", exist_ok=True)
 
 # Load dataset
 data = pd.read_csv("Dataset/dataset.csv")
