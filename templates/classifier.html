@@ -34,11 +34,24 @@
             </a>
             <p class="mb-0 text-light">Student Performance Predictor</p>
           </div>
-          <a
-            href="{{ url_for('index') }}"
-            class="btn btn-sm btn-outline-light text-white"
-            >← Back to Home</a
-          >
+
+          <div class="d-flex gap-2">
+            <a
+              href="{{ url_for('predictor_page') }}"
+              class="btn btn-sm fw-semibold text-white"
+              style="background-color: #ffae00ff; border: none"
+            >
+              Predict Score
+            </a>
+
+            <a
+              href="{{ url_for('index') }}"
+              class="btn btn-sm fw-semibold text-white"
+              style="background-color: #007bff; border: none"
+            >
+              ← Back to Home
+            </a>
+          </div>
         </div>
       </nav>
 
