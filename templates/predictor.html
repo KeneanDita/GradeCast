@@ -19,7 +19,6 @@
   </head>
   <body>
     <div class="container py-4">
-      <!-- NAVBAR -->
       <nav class="navbar glass-card mb-4 p-3">
         <div
           class="container-fluid d-flex justify-content-between align-items-center"
@@ -35,10 +34,20 @@
             </a>
             <p class="mb-0 text-light">Student Performance Predictor</p>
           </div>
-          <div>
+
+          <div class="d-flex gap-2">
+            <a
+              href="{{ url_for('classifier_page') }}"
+              class="btn btn-sm fw-semibold text-white"
+              style="background-color: #ffae00ff; border: none"
+            >
+              Classify Risk
+            </a>
+
             <a
               href="{{ url_for('index') }}"
-              class="btn btn-sm btn-outline-light text-white"
+              class="btn btn-sm fw-semibold text-white"
+              style="background-color: #007bff; border: none"
             >
               ← Back to Home
             </a>
