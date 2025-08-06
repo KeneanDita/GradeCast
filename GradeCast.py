@@ -1,5 +1,3 @@
-# risk_prediction_model.py
-
 # Import necessary libraries
 import numpy as np
 import pandas as pd
@@ -83,9 +81,7 @@ def classify_risk(score):
 
 features["risk"] = features["activity_score"].apply(classify_risk)
 
-# ---------------------------
 # Regression Model: Activity Score
-# ---------------------------
 X_reg = features.drop(columns=["activity_score", "risk"])
 y_reg = features["activity_score"]
 
@@ -100,9 +96,7 @@ y_pred_reg = rfr.predict(X_test_reg)
 print(f"Mean Squared Error: {mean_squared_error(y_test_reg, y_pred_reg):.2f}")
 print(f"R² Score: {r2_score(y_test_reg, y_pred_reg):.2f}")
 
-# ---------------------------
 # Classification Model: Risk Level
-# ---------------------------
 X_clf = features.drop(columns=["risk"])
 y_clf = features["risk"]
 
@@ -142,8 +136,6 @@ plt.tight_layout()
 plt.savefig("Feature Importance (Random Forest).png", dpi=300)
 plt.show()
 
-# ---------------------------
 # Save Models
-# ---------------------------
 joblib.dump(rfr, "models/RandomForestRegressor.pkl")
 joblib.dump(clf, "models/RandomForestClassifier.pkl")
