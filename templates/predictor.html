@@ -214,11 +214,27 @@
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(scaled),
             });
-            const data = await res.json();
 
-            document.getElementById("score-value").textContent =
-              data.activity_score;
-            document.getElementById("score-result").classList.remove("d-none");
+            const data = await res.json();
+            const resultBox = document.getElementById("score-result");
+            resultBox.classList.remove("d-none");
+
+            resultBox.innerHTML = `
+          <h4 class="mb-3">Your Predicted Activity Score:</h4>
+          <h1 id="score-value" class="display-4 text-primary fw-bold">${
+            data.score
+          } / 10</h1>
+          <p class="mt-3 lead text-success">${data.message}</p>
+          <h5 class="mt-4">Risk Level: <span class="text-warning">${
+            data.risk_level
+          }</span></h5>
+          <h6 class="mt-3 mb-2">Suggestions to Improve:</h6>
+          <ul class="list-group list-group-flush">
+            ${data.suggestions
+              .map((s) => `<li class="list-group-item">${s}</li>`)
+              .join("")}
+          </ul>
+        `;
           } catch (err) {
             alert("Prediction failed. Check inputs or server.");
             console.error(err);
