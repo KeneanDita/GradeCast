@@ -8,6 +8,10 @@ app = Flask(__name__)
 rfr = joblib.load("models/RandomForestRegressor.pkl")
 clf = joblib.load("models/RandomForestClassifier.pkl")
 
+# Get expected features from models
+RFR_FEATURES = list(rfr.feature_names_in_)
+CLF_FEATURES = list(clf.feature_names_in_)
+
 # Label encoder classes
 LE_CLASSES = [
     "High Risk",
@@ -87,6 +91,12 @@ def interpret_activity_score(score):
 @app.route("/predict_score", methods=["POST"])
 def predict_score():
     data = request.get_json()
+
+    # Validate inputs
+    missing = [f for f in RFR_FEATURES if f not in data]
+    if missing:
+        return jsonify({"error": f"Missing features: {missing}"}), 400
+
     df = pd.DataFrame([data])
     score = rfr.predict(df)[0]
     interpretation = interpret_activity_score(score)
@@ -95,10 +105,18 @@ def predict_score():
 
 @app.route("/predict_risk", methods=["POST"])
 def predict_risk():
-    data = request.get_json()
-    df = pd.DataFrame([data])
-    score = df["activity_score"].values[0]
-    df = df.drop(columns=["activity_score"])
+    data = pd.read_csv("Dataset/dataset.csv")
+
+    if "activity_score" not in data:
+        return jsonify({"error": "Missing activity_score"}), 400
+
+    score = data["activity_score"]
+
+    df = pd.DataFrame([data]).drop(columns=["activity_score"], errors="ignore")
+
+    missing = [f for f in CLF_FEATURES if f not in df.columns]
+    if missing:
+        return jsonify({"error": f"Missing features: {missing}"}), 400
 
     prediction = clf.predict(df)[0]
     risk_label = LE_CLASSES[prediction]
