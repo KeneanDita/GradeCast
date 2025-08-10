@@ -216,6 +216,12 @@
             });
 
             const data = await res.json();
+
+            if (data.error) {
+              alert("Error: " + data.error);
+              return;
+            }
+
             const resultBox = document.getElementById("score-result");
             resultBox.classList.remove("d-none");
 
