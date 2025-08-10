@@ -230,21 +230,26 @@
 
             const data = await res.json();
 
+            if (data.error) {
+              alert("Error: " + data.error);
+              return;
+            }
+
             const riskBox = document.getElementById("risk-result");
             riskBox.classList.remove("d-none");
 
             riskBox.innerHTML = `
-    <h4 class="mb-3">Your Risk Classification:</h4>
-    <h1 id="risk-value" class="display-5 text-danger fw-bold">${
-      data.risk_level
-    }</h1>
-    <h6 class="mt-4 mb-2">Suggestions to Reduce Risk:</h6>
-    <ul class="list-group list-group-flush">
-      ${data.suggestions
-        .map((s) => `<li class="list-group-item">${s}</li>`)
-        .join("")}
-    </ul>
-  `;
+          <h4 class="mb-3">Your Risk Classification:</h4>
+          <h1 id="risk-value" class="display-5 text-danger fw-bold">${
+            data.risk_level
+          }</h1>
+          <h6 class="mt-4 mb-2">Suggestions to Reduce Risk:</h6>
+          <ul class="list-group list-group-flush">
+            ${data.suggestions
+              .map((s) => `<li class="list-group-item">${s}</li>`)
+              .join("")}
+          </ul>
+        `;
           } catch (err) {
             alert("Risk prediction failed. Check inputs or server.");
             console.error(err);
