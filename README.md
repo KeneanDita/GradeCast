@@ -4,6 +4,8 @@
 
 **GradeCast** is a web-based application designed to predict student performance using machine learning. Built with Flask, it helps forecast a student's likely academic outcome (grade range) and assess academic risk based on multiple input factors. The goal is to empower students, educators, and academic advisors to take informed, proactive measures by offering timely insights and recommendations.
 
+### Docker link: <https://hub.docker.com/r/keneandita/gradecast>
+
 ## Key Features
 
 * Clean, intuitive interface for easy student data entry
